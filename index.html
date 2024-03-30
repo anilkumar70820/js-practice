@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Js Practice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div
+      class="max-w-[1440px] 2xl:max-w-full px-5 mx-auto py-10 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-5"
+    >
+      <!-- ===================== ONCLICK COUNTER ============== -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2 class="font-medium text-3xl font-mono">On Click</h2>
+        <p class="font-medium text-3xl font-mono" id="number">0</p>
+        <button
+          id="addButton"
+          class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+        >
+          Add Number
+        </button>
+        <button
+          id="lessButton"
+          class="hidden font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+        >
+          Subtract Number
+        </button>
+      </div>
+      <!-- ===================== ONMOUSEOVER =================== -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2 class="font-medium text-3xl font-mono">On Mouseover</h2>
+        <button
+          id="mouseover"
+          class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+        >
+          Mouse Over Me
+        </button>
+      </div>
+      <!-- ============ ONMOUSEOUT ============= -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2 class="font-medium text-3xl font-mono">On Mouse Out</h2>
+        <button
+          id="mouseout"
+          class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+        >
+          Mouse Out Me
+        </button>
+      </div>
+      <!-- ================== ONLOAD ================ -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2 class="font-medium text-3xl font-mono">On Load</h2>
+        <button
+          id="pageload"
+          class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+        >
+          Page Load
+        </button>
+      </div>
+      <!-- ================== THIS KEYWORD ============= -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2 class="font-medium text-3xl font-mono">This Keyword</h2>
+        <button
+          id="thiskey"
+          class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+        >
+          This Keyword
+        </button>
+      </div>
+      <!-- ============== BOTH EVENT MOUSEOVER AND MOUSEOUT ============== -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2 class="font-medium text-3xl font-mono">2 Events</h2>
+        <button
+          id="both"
+          class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+        >
+          2 Events
+        </button>
+      </div>
+      <!-- ================== ON KEYDOWN ======== -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2 class="font-medium text-3xl font-mono">On Keydown</h2>
+
+        <button
+          id="keyDown"
+          class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+        >
+          On Keydown
+        </button>
+      </div>
+      <!-- ================== ADD NEW VALUE EVERY TIME ======== -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2 class="font-medium text-3xl font-mono text-center max-w-[300px]">
+          COUNTER WITH SAVED VALUES
+        </h2>
+        <p class="font-medium text-3xl font-mono" id="value">0</p>
+        <div class="flex gap-3">
+          <button
+            id="addnumber"
+            class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+          >
+            Add Value
+          </button>
+          <button
+            id="savenumber"
+            class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+          >
+            Save Value
+          </button>
+        </div>
+        <div id="storenumber" class="font-medium text-3xl font-mono"></div>
+        <p id="error" class="font-medium font-mono text-xl text-red-700"></p>
+      </div>
+      <!-- =================== CALCULATOR =================== -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2 class="font-medium text-3xl font-mono text-center max-w-[300px]">
+          CALCULATOR
+        </h2>
+        <p
+          class="opacity-30 text-3xl font-mono py-2 px-4 rounded-xl border-2 border-solid border-blue-700"
+          id="result"
+        >
+          Result Here
+        </p>
+        <input
+          id="firstvalue"
+          class="outline-none py-2 font-mono text-black text-2xl px-4 rounded-xl border-2 border-solid border-blue-700 w-full"
+          type="number"
+          placeholder="First Value"
+        />
+        <input
+          id="secondvalue"
+          class="outline-none py-2 font-mono text-black text-2xl px-4 rounded-xl border-2 border-solid border-blue-700 w-full"
+          type="number"
+          placeholder="Second Value"
+        />
+        <div class="flex gap-3">
+          <button
+            id="plus"
+            class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+          >
+            +
+          </button>
+          <button
+            id="minus"
+            class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+          >
+            -
+          </button>
+          <button
+            id="multiply"
+            class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+          >
+            *
+          </button>
+          <button
+            id="divide"
+            class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+          >
+            \
+          </button>
+          <button
+            id="clear"
+            class="font-mono text-white text-2xl bg-blue-700 rounded-xl px-4 py-2"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+      <!-- ================ ACCORDIAN ============= -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2
+          class="font-medium text-3xl font-mono text-center max-w-[300px] uppercase"
+        >
+          accordian
+        </h2>
+        <div class="mb-0 bg-blue-700 rounded-xl">
+          <div
+            id="accordianbutton"
+            class="flex items-center px-3 cursor-pointer"
+          >
+            <h2
+              class="font-medium text-xl font-mono py-2 bg-blue-700 text-white rounded-xl w-full"
+            >
+              Accordian Item 1
+            </h2>
+            <span id="arrow" class="text-2xl text-white font-bold rotate-[0deg]"
+              >^</span
+            >
+          </div>
+          <p
+            id="accordiancontent"
+            class="font-medium bg-blue-700 text-white rounded-b-xl text-sm font-mono px-3 py-2 max-h-[200px] overflow-hidden duration-300 transistion-all"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque
+            odio quas dolores harum quos earum iusto.
+          </p>
+        </div>
+        <div class="mb-0 bg-blue-700 rounded-xl">
+          <div
+            id="accordianbutton2"
+            class="flex items-center px-3 cursor-pointer"
+          >
+            <h2
+              class="font-medium text-xl font-mono py-2 bg-blue-700 text-white rounded-xl w-full"
+            >
+              Accordian Item 2
+            </h2>
+            <span
+              id="arrow2"
+              class="text-2xl text-white font-bold rotate-[180deg]"
+              >^</span
+            >
+          </div>
+          <p
+            id="accordiancontent2"
+            class="font-medium bg-blue-700 text-white rounded-b-xl text-sm font-mono px-3 max-h-0 overflow-hidden duration-300 transistion-all"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque
+            odio quas dolores harum quos earum iusto.
+          </p>
+        </div>
+        <div class="mb-0 bg-blue-700 rounded-xl">
+          <div
+            id="accordianbutton3"
+            class="flex items-center px-3 cursor-pointer"
+          >
+            <h2
+              class="font-medium text-xl font-mono py-2 bg-blue-700 text-white rounded-xl w-full"
+            >
+              Accordian Item 3
+            </h2>
+            <span
+              id="arrow3"
+              class="text-2xl text-white font-bold rotate-[180deg]"
+              >^</span
+            >
+          </div>
+          <p
+            id="accordiancontent3"
+            class="font-medium bg-blue-700 text-white rounded-b-xl text-sm font-mono px-3 max-h-0 overflow-hidden duration-300 transistion-all"
+          >
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque
+            odio quas dolores harum quos earum iusto.
+          </p>
+        </div>
+      </div>
+      <!-- ============ ADVANCED CALCULATOR ============ -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2
+          class="font-medium text-3xl font-mono text-center max-w-[300px] uppercase text-nowrap"
+        >
+          advanced calculator
+        </h2>
+        <div class="flex items-center gap-4 w-full">
+          <p
+            id="calculate"
+            class="w-full h-full bg-transparent outline-none border-2 border-solid border-blue-700 rounded-xl px-3 py-3 text-3xl"
+          ></p>
+          <div
+            id="clearresult"
+            class="p-3 cursor-pointer bg-blue-700 rounded-xl text-2xl text-white flex justify-center items-center"
+          >
+            &#10006;
+          </div>
+        </div>
+        <div class="grid grid-cols-4 w-full gap-2">
+          <div
+            onclick="calculator(1)"
+            id="number1"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            1
+          </div>
+          <div
+            onclick="calculator(2)"
+            id="number2"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            2
+          </div>
+          <div
+            onclick="calculator(3)"
+            id="number3"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            3
+          </div>
+          <div
+            onclick="calculator('+')"
+            id="addcalculate"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            +
+          </div>
+          <div
+            onclick="calculator(4)"
+            id="number4"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            4
+          </div>
+          <div
+            onclick="calculator(5)"
+            id="number5"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            5
+          </div>
+          <div
+            onclick="calculator(6)"
+            id="number6"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            6
+          </div>
+          <div
+            onclick="calculator('-')"
+            id="minuscalculate"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            -
+          </div>
+          <div
+            onclick="calculator(7)"
+            id="number7"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            7
+          </div>
+          <div
+            onclick="calculator(8)"
+            id="number8"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            8
+          </div>
+          <div
+            onclick="calculator(9)"
+            id="number9"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            9
+          </div>
+          <div
+            onclick="calculator('*')"
+            id="multiplycalculate"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            *
+          </div>
+          <div
+            onclick="calculator('.')"
+            id="dot"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            .
+          </div>
+          <div
+            onclick="calculator(0)"
+            id="number0"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            0
+          </div>
+          <div
+            onclick="calculator('/')"
+            id="dividecalculate"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            /
+          </div>
+          <div
+            id="equal"
+            class="cursor-pointer p-3 bg-blue-700 rounded-xl text-xl text-white flex justify-center items-center"
+          >
+            =
+          </div>
+        </div>
+      </div>
+      <!-- =============== TABS ============= -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2
+          class="font-medium text-3xl font-mono text-center max-w-[300px] uppercase text-nowrap"
+        >
+          tabs
+        </h2>
+        <div class="flex items-center gap-5 justify-start w-full">
+          <button
+            id="tab_1"
+            class="font-medium text-xl font-mono text-white cursor-pointer bg-blue-700 rounded-xl px-4 py-2 bg-red-700"
+          >
+            Tab 1
+          </button>
+          <button
+            id="tab_2"
+            class="font-medium text-xl font-mono text-white cursor-pointer bg-blue-700 rounded-xl px-4 py-2"
+          >
+            Tab 2
+          </button>
+          <button
+            id="tab_3"
+            class="font-medium text-xl font-mono text-white cursor-pointer bg-blue-700 rounded-xl px-4 py-2"
+          >
+            Tab 3
+          </button>
+        </div>
+        <div>
+          <p id="content_1" class="text-base text-black font-medium font-mono">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, sint
+            voluptatum consequatur expedita iusto placeat asperiores aliquam
+            similique facere blanditiis.
+          </p>
+          <p
+            id="content_2"
+            class="text-base text-black font-medium font-mono hidden"
+          >
+            Quae, sint voluptatum consequatur expedita iusto placeat asperiores
+            aliquam similique facere blanditiis. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit.
+          </p>
+          <p
+            id="content_3"
+            class="text-base text-black font-medium font-mono hidden"
+          >
+            consectetur adipisicing Lorem ipsum dolor sit amet elit. Quae, sint
+            voluptatum consequatur expedita iusto placeat asperiores aliquam
+            similique facere blanditiis.
+          </p>
+        </div>
+      </div>
+      <!-- ============ SIDEBAR ======== -->
+      <div
+        class="bg-white flex flex-col gap-5 justify-center items-center shadow-xl rounded-xl p-10"
+      >
+        <h2
+          class="font-medium text-3xl font-mono text-center uppercase text-nowrap"
+        >
+          sidebar
+        </h2>
+        <button
+          id="sidebar"
+          class="text-white font-medium px-6 py-2 rounded-xl bg-blue-700"
+        >
+          open sidebar
+        </button>
+        <div
+          id="overlay"
+          class="w-full h-full bg-black bg-opacity-70 transistion-all duration-300 opacity-0 pointer-events-none fixed left-0 top-0"
+        ></div>
+        <div
+          id="side_links"
+          class="bg-blue-700 rounded-r-xl transistion-all duration-300 flex flex-col justify-start gap-4 fixed w-[300px] p-5 top-0 -left-[100%] h-full"
+        >
+          <div
+            id="close"
+            class="p-3 cursor-pointer bg-blue-700 rounded-xl text-2xl text-white flex justify-end items-center"
+          >
+            &#10006;
+          </div>
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none text-xl font-mono font-medium uppercase text-white"
+            href="#"
+            >about us</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none text-xl font-mono font-medium uppercase text-white"
+            href="#"
+            >about us</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none text-xl font-mono font-medium uppercase text-white"
+            href="#"
+            >about us</a
+          >
+          <a
+            onclick="RemoveSidebar()"
+            class="text-decoration-none text-xl font-mono font-medium uppercase text-white"
+            href="#"
+            >about us</a
+          >
+        </div>
+      </div>
+
+      <!-- ============== SELECT ============= -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2
+          class="font-medium text-3xl font-mono text-center max-w-[300px] uppercase text-nowrap"
+        >
+          select without map
+        </h2>
+        <div class="w-full flex justify-center relative">
+          <div
+            id="selectBox"
+            class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-xl max-w-[150px] w-full py-1 px-2 cursor-pointer"
+          >
+            <p id="selected" class="text-lg font-medium font-mono">Select</p>
+            <span id="selectarrow" class="text-xl font-bold">^</span>
+          </div>
+          <div
+            id="options"
+            class="absolute hidden shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+          >
+            <p
+              onclick="selectValue('Red')"
+              class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300"
+            >
+              Red
+            </p>
+            <p
+              onclick="selectValue('Green')"
+              class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300"
+            >
+              Green
+            </p>
+            <p
+              onclick="selectValue('Yellow')"
+              class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300"
+            >
+              Yellow
+            </p>
+            <p
+              onclick="selectValue('Pink')"
+              class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300"
+            >
+              Pink
+            </p>
+            <p
+              onclick="selectValue('Black')"
+              class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300"
+            >
+              Black
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- ================== SELECT MAP ============== -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2
+          class="font-medium text-3xl font-mono text-center max-w-[300px] uppercase text-nowrap"
+        >
+          select with map
+        </h2>
+        <div class="w-full flex justify-center relative">
+          <div
+            id="mapselectBox"
+            class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-xl max-w-[150px] w-full py-1 px-2 cursor-pointer"
+          >
+            <p id="mapselected" class="text-lg font-medium font-mono">Select</p>
+            <span id="mapselectarrow" class="text-xl font-bold">^</span>
+          </div>
+          <div
+            id="mapoptions"
+            class="absolute hidden shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================ ONCLICK COUNT SCRIPT ======= -->
+    <script>
+      const btn = document.getElementById("addButton");
+      const number = document.getElementById("number");
+      const lessNumber = document.getElementById("lessButton");
+      var a = 0;
+      btn.addEventListener("click", function () {
+        if (a <= 19) {
+          a = a + 1;
+          number.innerHTML = a;
+        }
+        if (a <= 19) {
+          btn.innerHTML = "Add Number";
+          lessNumber.style.display = "none";
+        }
+        if (a == 20) {
+          btn.style.display = "none";
+          lessNumber.style.display = "block";
+        }
+      });
+      lessNumber.addEventListener("click", function () {
+        if (a > 0) {
+          a = a - 1;
+          number.innerHTML = a;
+        }
+        if (a == 0) {
+          btn.style.display = "block";
+          lessNumber.style.display = "none";
+        }
+      });
+    </script>
+    <!-- ============== MOUSEOVER ============= -->
+    <script>
+      var overme = document.getElementById("mouseover");
+      overme.addEventListener("mouseover", function () {
+        overme.style.backgroundColor = "black";
+        overme.style.color = "white";
+      });
+    </script>
+    <!-- ================== ONMOUSEOUT ========== -->
+    <script>
+      var out = document.getElementById("mouseout");
+      out.addEventListener("mouseout", function () {
+        out.style.backgroundColor = "red";
+      });
+    </script>
+    <!-- ================== ONLOAD ========== -->
+    <script>
+      var pageload = document.getElementById("pageload");
+      window.addEventListener("load", function () {
+        pageload.style.backgroundColor = "orange";
+        pageload.innerHTML = "Page Loaded";
+      });
+    </script>
+    <!-- ================== THIS KEYWORD ========== -->
+    <script>
+      var thiskey = document.getElementById("thiskey");
+      thiskey.addEventListener("click", function () {
+        thiskey.innerText = "Check Console";
+        console.log("button Id:", this.id);
+        console.log("button Class:", this.className);
+        console.log("button Text:", this.innerText);
+      });
+    </script>
+    <!-- ============ MOUSEOVER AND MOUSEOUT ====== -->
+    <script>
+      var both = document.getElementById("both");
+      both.addEventListener("mouseover", function () {
+        both.innerHTML = "Mouse Overed Me";
+      });
+      both.addEventListener("mouseout", function () {
+        both.innerHTML = "Mouse Outed Me";
+      });
+    </script>
+    <!-- ============== ONKEYDOWN ============== -->
+    <script>
+      var keyDown = document.getElementById("keyDown");
+      keyDown.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          keyDown.style.backgroundColor = "orange";
+        }
+      });
+    </script>
+    <!-- ========== ADD NEW VALUE EVERY TIME =============  -->
+    <script>
+      var getNumber = document.getElementById("value");
+      var addNumber = document.getElementById("addnumber");
+      var saveNumber = document.getElementById("savenumber");
+      var dataStore = document.getElementById("storenumber");
+      var error = document.getElementById("error");
+      var myNumber = 0;
+      var arr = [];
+      addNumber.addEventListener("click", function () {
+        myNumber = myNumber + 1;
+        getNumber.innerHTML = myNumber;
+      });
+      saveNumber.addEventListener("click", function () {
+        if (!arr.includes(getNumber.innerHTML)) {
+          arr.push(getNumber.innerHTML);
+          dataStore.innerHTML = arr.map((obj) => obj);
+          getNumber.innerHTML = 0;
+          myNumber = 0;
+          error.style.display = "none";
+        } else {
+          error.innerHTML = getNumber.innerHTML + " is already exits";
+          error.style.display = "block";
+        }
+      });
+    </script>
+    <!-- ============ CALCULATOR ========= -->
+    <script>
+      var result = document.getElementById("result");
+      var firstvalue = document.getElementById("firstvalue");
+      var secondvalue = document.getElementById("secondvalue");
+      var plus = document.getElementById("plus");
+      var minus = document.getElementById("minus");
+      var multiply = document.getElementById("multiply");
+      var divide = document.getElementById("divide");
+      var clear = document.getElementById("clear");
+      plus.addEventListener("click", function () {
+        var firstNumber = Number(firstvalue.value);
+        var secondNumber = Number(secondvalue.value);
+        result.innerHTML = firstNumber + secondNumber;
+      });
+      minus.addEventListener("click", function () {
+        var firstNumber = Number(firstvalue.value);
+        var secondNumber = Number(secondvalue.value);
+        result.innerHTML = firstNumber - secondNumber;
+      });
+      divide.addEventListener("click", function () {
+        var firstNumber = Number(firstvalue.value);
+        var secondNumber = Number(secondvalue.value);
+        result.innerHTML = firstNumber / secondNumber;
+      });
+      multiply.addEventListener("click", function () {
+        var firstNumber = Number(firstvalue.value);
+        var secondNumber = Number(secondvalue.value);
+        result.innerHTML = firstNumber * secondNumber;
+      });
+      clear.addEventListener("click", function () {
+        result.innerHTML = "Result Here";
+        firstvalue.value = null;
+        secondvalue.value = null;
+      });
+    </script>
+    <!-- ============== ACCORDIAN ========== -->
+    <script>
+      var accordianButton = document.getElementById("accordianbutton");
+      var accordianContent = document.getElementById("accordiancontent");
+      var accordianButton2 = document.getElementById("accordianbutton2");
+      var accordianContent2 = document.getElementById("accordiancontent2");
+      var accordianButton3 = document.getElementById("accordianbutton3");
+      var accordianContent3 = document.getElementById("accordiancontent3");
+      var arrow = document.getElementById("arrow");
+      accordianButton.addEventListener("click", function () {
+        accordianContent.classList.toggle("max-h-[0px]");
+        accordianContent.classList.toggle("py-2");
+        accordianContent2.classList.remove("max-h-[200px]");
+        accordianContent2.classList.remove("py-2");
+        accordianContent3.classList.remove("max-h-[200px]");
+        accordianContent3.classList.remove("py-2");
+        arrow.classList.toggle("rotate-[180deg]");
+        arrow2.classList.add("rotate-[180deg]");
+      });
+      accordianButton2.addEventListener("click", function () {
+        accordianContent2.classList.toggle("max-h-[200px]");
+        accordianContent2.classList.toggle("py-2");
+        accordianContent.classList.add("max-h-[0px]");
+        accordianContent.classList.remove("py-2");
+        accordianContent3.classList.remove("max-h-[200px]");
+        accordianContent3.classList.remove("py-2");
+        arrow.classList.add("rotate-[180deg]");
+        arrow2.classList.toggle("rotate-[180deg]");
+        arrow3.classList.add("rotate-[180deg]");
+      });
+      accordianButton3.addEventListener("click", function () {
+        accordianContent3.classList.toggle("max-h-[200px]");
+        accordianContent3.classList.toggle("py-2");
+        accordianContent2.classList.remove("max-h-[200px]");
+        accordianContent2.classList.remove("py-2");
+        accordianContent.classList.add("max-h-[0px]");
+        accordianContent.classList.remove("py-2");
+        arrow.classList.add("rotate-[180deg]");
+        arrow2.classList.add("rotate-[180deg]");
+        arrow3.classList.toggle("rotate-[180deg]");
+      });
+    </script>
+    <!-- =============== ADVANCED CALCULATOR ============ -->
+    <script>
+      var calculate = document.getElementById("calculate");
+      // var addcalculate = document.getElementById("addcalculate");
+      // var minuscalculate = document.getElementById("minuscalculate");
+      // var multiplycalculate = document.getElementById("multiplycalculate");
+      // var dividecalculate = document.getElementById("dividecalculate");
+      var equal = document.getElementById("equal");
+      // var number1 = document.getElementById("number1");
+      // var number2 = document.getElementById("number2");
+      // var number3 = document.getElementById("number3");
+      // var number4 = document.getElementById("number4");
+      // var number5 = document.getElementById("number5");
+      // var number6 = document.getElementById("number6");
+      // var number7 = document.getElementById("number7");
+      // var number8 = document.getElementById("number8");
+      // var number9 = document.getElementById("number9");
+      // var number0 = document.getElementById("number0");
+      // var dot = document.getElementById("dot");
+      var clearresult = document.getElementById("clearresult");
+      function calculator(val) {
+        calculate.innerHTML += val;
+      }
+
+      // number1.addEventListener("click", function () {
+      //   calculate.innerHTML += number1.innerHTML.trim();
+      // });
+      // number2.addEventListener("click", function () {
+      //   calculate.innerHTML += number2.innerHTML.trim();
+      // });
+      // number3.addEventListener("click", function () {
+      //   calculate.innerHTML += number3.innerHTML.trim();
+      // });
+      // number4.addEventListener("click", function () {
+      //   calculate.innerHTML += number4.innerHTML.trim();
+      // });
+      // number5.addEventListener("click", function () {
+      //   calculate.innerHTML += number5.innerHTML.trim();
+      // });
+      // number6.addEventListener("click", function () {
+      //   calculate.innerHTML += number6.innerHTML.trim();
+      // });
+      // number7.addEventListener("click", function () {
+      //   calculate.innerHTML += number7.innerHTML.trim();
+      // });
+      // number8.addEventListener("click", function () {
+      //   calculate.innerHTML += number8.innerHTML.trim();
+      // });
+      // number9.addEventListener("click", function () {
+      //   calculate.innerHTML += number9.innerHTML.trim();
+      // });
+      // number0.addEventListener("click", function () {
+      //   calculate.innerHTML += number0.innerHTML.trim();
+      // });
+      // dot.addEventListener("click", function () {
+      //   calculate.innerHTML += dot.innerHTML.trim();
+      // });
+      // addcalculate.addEventListener("click", function () {
+      //   calculate.innerHTML += addcalculate.innerHTML.trim();
+      // });
+      // minuscalculate.addEventListener("click", function () {
+      //   calculate.innerHTML += minuscalculate.innerHTML.trim();
+      // });
+      // multiplycalculate.addEventListener("click", function () {
+      //   calculate.innerHTML += multiplycalculate.innerHTML.trim();
+      // });
+      // dividecalculate.addEventListener("click", function () {
+      //   calculate.innerHTML += dividecalculate.innerHTML.trim();
+      // });
+      equal.addEventListener("click", function () {
+        calculate.innerHTML = eval(calculate.innerHTML);
+      });
+      clearresult.addEventListener("click", function () {
+        calculate.innerHTML = "";
+      });
+    </script>
+    <!-- =============== TABS ============ -->
+    <script>
+      var tab_1 = document.getElementById("tab_1");
+      var tab_2 = document.getElementById("tab_2");
+      var tab_3 = document.getElementById("tab_3");
+      var content_1 = document.getElementById("content_1");
+      var content_2 = document.getElementById("content_2");
+      var content_3 = document.getElementById("content_3");
+      tab_1.addEventListener("click", function () {
+        content_1.classList.remove("hidden");
+        tab_1.classList.add("bg-red-700");
+        content_2.classList.add("hidden");
+        content_3.classList.add("hidden");
+        tab_3.classList.remove("bg-red-700");
+        tab_2.classList.remove("bg-red-700");
+      });
+      tab_2.addEventListener("click", function () {
+        content_2.classList.remove("hidden");
+        content_1.classList.add("hidden");
+        content_3.classList.add("hidden");
+        tab_1.classList.remove("bg-red-700");
+        tab_2.classList.add("bg-red-700");
+        tab_3.classList.remove("bg-red-700");
+      });
+      tab_3.addEventListener("click", function () {
+        content_3.classList.remove("hidden");
+        content_1.classList.add("hidden");
+        content_2.classList.add("hidden");
+        tab_3.classList.add("bg-red-700");
+        tab_2.classList.remove("bg-red-700");
+      });
+    </script>
+    <!-- ============= SIDEBAR =========== -->
+    <script>
+      var sidebar = document.getElementById("sidebar");
+      var side_links = document.getElementById("side_links");
+      var closesidebar = document.getElementById("close");
+      var sideoverlay = document.getElementById("overlay");
+      sidebar.addEventListener("click", function () {
+        side_links.classList.add("left-0");
+        sideoverlay.classList.add("opacity-100");
+        sideoverlay.classList.remove("pointer-events-none");
+        document.body.classList.add("overflow-hidden");
+      });
+      closesidebar.addEventListener("click", function () {
+        side_links.classList.remove("left-0");
+        sideoverlay.classList.remove("opacity-100");
+        sideoverlay.classList.add("pointer-events-none");
+        document.body.classList.remove("overflow-hidden");
+      });
+      sideoverlay.addEventListener("click", function () {
+        side_links.classList.remove("left-0");
+        sideoverlay.classList.remove("opacity-100");
+        sideoverlay.classList.add("pointer-events-none");
+        document.body.classList.remove("overflow-hidden");
+      });
+      function RemoveSidebar() {
+        side_links.classList.remove("left-0");
+        sideoverlay.classList.remove("opacity-100");
+        sideoverlay.classList.add("pointer-events-none");
+        document.body.classList.remove("overflow-hidden");
+      }
+    </script>
+    <!-- ============== SELECT ============ -->
+    <script>
+      var select = document.getElementById("selected");
+      var options = document.getElementById("options");
+      var selectbox = document.getElementById("selectBox");
+      var selectarrow = document.getElementById("selectarrow");
+      function selectValue(val) {
+        select.innerHTML = val;
+        select.style.color = "white";
+        selectbox.style.backgroundColor = val;
+        selectarrow.style.color = "white";
+        options.classList.add("hidden");
+        selectarrow.classList.remove("rotate-[180deg]");
+      }
+      selectbox.addEventListener("click", function (event) {
+        event.stopPropagation();
+        options.classList.toggle("hidden");
+        selectarrow.classList.toggle("rotate-[180deg]");
+      });
+      document.addEventListener("click", function () {
+        if (!options.classList.contains("hidden")) {
+          options.classList.add("hidden");
+        }
+      });
+    </script>
+    <!-- ============= SELECT WITH MAP ======== -->
+    <script>
+      var mapselect = document.getElementById("mapselected");
+      var mapoptions = document.getElementById("mapoptions");
+      var mapselectbox = document.getElementById("mapselectBox");
+      var mapselectarrow = document.getElementById("mapselectarrow");
+      function mapoptionsvalue(val) {
+        mapselect.innerHTML = val;
+        mapselect.style.color = "white";
+        mapselectbox.style.backgroundColor = val;
+        mapselectarrow.style.color = "white";
+        mapoptions.classList.add("hidden");
+        mapselectarrow.classList.remove("rotate-[180deg]");
+      }
+      const colors = [
+        "red",
+        "green",
+        "black",
+        "pink",
+        "yellow",
+        "blue",
+        "orange",
+      ];
+      mapoptions.innerHTML = colors
+        .map((obj) => {
+          return `<p onclick="mapoptionsvalue('${obj}')" class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300">${obj}</p>`;
+        })
+        .join("");
+      mapselectbox.addEventListener("click", function (event) {
+        event.stopPropagation();
+        mapoptions.classList.toggle("hidden");
+        mapselectarrow.classList.toggle("rotate-[180deg]");
+      });
+      document.addEventListener("click", function () {
+        if (!mapoptions.classList.contains("hidden")) {
+          mapoptions.classList.add("hidden");
+        }
+      });
+    </script>
+  </body>
+</html>
