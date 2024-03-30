@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Js Practice</title>
+    <link rel="stylesheet" href="/assets/css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
@@ -524,7 +525,9 @@
             class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-xl max-w-[150px] w-full py-1 px-2 cursor-pointer"
           >
             <p id="selected" class="text-lg font-medium font-mono">Select</p>
-            <span id="selectarrow" class="text-xl font-bold">^</span>
+            <span id="selectarrow" class="text-xl font-bold rotate-[180deg]"
+              >^</span
+            >
           </div>
           <div
             id="options"
@@ -578,12 +581,72 @@
             class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-xl max-w-[150px] w-full py-1 px-2 cursor-pointer"
           >
             <p id="mapselected" class="text-lg font-medium font-mono">Select</p>
-            <span id="mapselectarrow" class="text-xl font-bold">^</span>
+            <span id="mapselectarrow" class="text-xl font-bold rotate-[180deg]"
+              >^</span
+            >
           </div>
           <div
             id="mapoptions"
             class="absolute hidden shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
           ></div>
+        </div>
+      </div>
+      <!-- ================== TEXT EDITOR ============= -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2
+          class="font-medium text-3xl font-mono text-center max-w-[300px] uppercase text-nowrap"
+        >
+          text editor
+        </h2>
+        <h2 id="changestyle">this is sample text</h2>
+        <div class="w-full flex flex-col gap-3">
+          <div class="relative">
+            <div
+              id="colorbox"
+              class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-md w-full py-1 px-2 cursor-pointer"
+            >
+              <p id="colorselected" class="text-lg font-medium font-mono">
+                Select Color
+              </p>
+              <span id="textarrow" class="text-xl font-bold">^</span>
+            </div>
+            <div
+              id="coloroptions"
+              class="absolute hidden z-10 !bg-white shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+            ></div>
+          </div>
+          <div class="relative">
+            <div
+              id="sizebox"
+              class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-md w-full py-1 px-2 cursor-pointer"
+            >
+              <p id="fontsizeselected" class="text-lg font-medium font-mono">
+                Select font size
+              </p>
+              <span id="textarrow" class="text-xl font-bold">^</span>
+            </div>
+            <div
+              id="fontsizeoptions"
+              class="absolute hidden z-10 !bg-white shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+            ></div>
+          </div>
+          <div class="relative">
+            <div
+              id="familybox"
+              class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-md w-full py-1 px-2 cursor-pointer"
+            >
+              <p id="familyselected" class="text-lg font-medium font-mono">
+                Select font family
+              </p>
+              <span id="textarrow" class="text-xl font-bold">^</span>
+            </div>
+            <div
+              id="familyoptions"
+              class="absolute hidden z-10 !bg-white shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+            ></div>
+          </div>
         </div>
       </div>
     </div>
@@ -881,6 +944,7 @@
         content_2.classList.add("hidden");
         tab_3.classList.add("bg-red-700");
         tab_2.classList.remove("bg-red-700");
+        tab_1.classList.remove("bg-red-700");
       });
     </script>
     <!-- ============= SIDEBAR =========== -->
@@ -926,7 +990,7 @@
         selectbox.style.backgroundColor = val;
         selectarrow.style.color = "white";
         options.classList.add("hidden");
-        selectarrow.classList.remove("rotate-[180deg]");
+        selectarrow.classList.toggle("rotate-[180deg]");
       }
       selectbox.addEventListener("click", function (event) {
         event.stopPropagation();
@@ -936,6 +1000,7 @@
       document.addEventListener("click", function () {
         if (!options.classList.contains("hidden")) {
           options.classList.add("hidden");
+          selectarrow.classList.toggle("rotate-[180deg]");
         }
       });
     </script>
@@ -951,7 +1016,7 @@
         mapselectbox.style.backgroundColor = val;
         mapselectarrow.style.color = "white";
         mapoptions.classList.add("hidden");
-        mapselectarrow.classList.remove("rotate-[180deg]");
+        mapselectarrow.classList.toggle("rotate-[180deg]");
       }
       const colors = [
         "red",
@@ -975,6 +1040,86 @@
       document.addEventListener("click", function () {
         if (!mapoptions.classList.contains("hidden")) {
           mapoptions.classList.add("hidden");
+          mapselectarrow.classList.toggle("rotate-[180deg]");
+        }
+      });
+    </script>
+    <!-- =============== TEXT EDITOR ===================== -->
+    <script>
+      var coloroptions = document.getElementById("coloroptions");
+      var fontsizeoptions = document.getElementById("fontsizeoptions");
+      var familyoptions = document.getElementById("familyoptions");
+      var colorselected = document.getElementById("colorselected");
+      var fontsizeselected = document.getElementById("fontsizeselected");
+      var familyselected = document.getElementById("familyselected");
+      var colorbox = document.getElementById("colorbox");
+      var familybox = document.getElementById("familybox");
+      var sizebox = document.getElementById("sizebox");
+      var changestyle = document.getElementById("changestyle");
+      const stylecolors = ["green", "blue", "orange", "red"];
+      const stylefamily = [
+        "roboto",
+        "poppins",
+        "inter",
+        "noto-sans",
+        "manrope",
+      ];
+      const stylesize = ["18px", "24px", "30px", "32px"];
+      coloroptions.innerHTML = stylecolors
+        .map((obj) => {
+          return `<p onclick="selectcolor('${obj}')" class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300">${obj}</p>`;
+        })
+        .join("");
+      familyoptions.innerHTML = stylefamily
+        .map((obj) => {
+          return `<p onclick="selectfamily('${obj}')" class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300">${obj}</p>`;
+        })
+        .join("");
+      fontsizeoptions.innerHTML = stylesize
+        .map((obj) => {
+          return `<p onclick="selectsize('${obj}')" class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300">${obj}</p>`;
+        })
+        .join("");
+      // ============= change color ==========
+      function selectcolor(val) {
+        colorselected.innerHTML = val;
+        changestyle.style.color = val;
+      }
+      colorbox.addEventListener("click", function (event) {
+        event.stopPropagation();
+        coloroptions.classList.toggle("hidden");
+      });
+      document.addEventListener("click", function () {
+        if (!coloroptions.classList.contains("hidden")) {
+          coloroptions.classList.add("hidden");
+        }
+      });
+      // ====================== change font size ==============
+      function selectsize(val) {
+        fontsizeselected.innerHTML = val;
+        changestyle.style.fontSize = val;
+      }
+      sizebox.addEventListener("click", function (event) {
+        event.stopPropagation();
+        fontsizeoptions.classList.toggle("hidden");
+      });
+      document.addEventListener("click", function () {
+        if (!fontsizeoptions.classList.contains("hidden")) {
+          fontsizeoptions.classList.add("hidden");
+        }
+      });
+      // ============= CHANGE FONT FAMILY =========
+      function selectfamily(val) {
+        familyselected.innerHTML = val;
+        changestyle.classList.add(val);
+      }
+      familybox.addEventListener("click", function (event) {
+        event.stopPropagation();
+        familyoptions.classList.toggle("hidden");
+      });
+      document.addEventListener("click", function () {
+        if (!familyoptions.classList.contains("hidden")) {
+          familyoptions.classList.add("hidden");
         }
       });
     </script>
