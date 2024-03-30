@@ -9,7 +9,7 @@
   </head>
   <body>
     <div
-      class="max-w-[1440px] 2xl:max-w-full px-5 mx-auto py-10 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-5"
+      class="max-w-[1440px] 2xl:max-w-full sm:px-5 px-3 mx-auto sm:py-10 py-4 grid 2xl:grid-cols-4 xl:grid-cols-3 md:grid-cols-2 gap-5"
     >
       <!-- ===================== ONCLICK COUNTER ============== -->
       <div
@@ -610,7 +610,9 @@
               <p id="colorselected" class="text-lg font-medium font-mono">
                 Select Color
               </p>
-              <span id="textarrow" class="text-xl font-bold">^</span>
+              <span id="colorarrow" class="text-xl font-bold rotate-[180deg]"
+                >^</span
+              >
             </div>
             <div
               id="coloroptions"
@@ -625,7 +627,9 @@
               <p id="fontsizeselected" class="text-lg font-medium font-mono">
                 Select font size
               </p>
-              <span id="textarrow" class="text-xl font-bold">^</span>
+              <span id="sizearrow" class="text-xl font-bold rotate-[180deg]"
+                >^</span
+              >
             </div>
             <div
               id="fontsizeoptions"
@@ -640,7 +644,9 @@
               <p id="familyselected" class="text-lg font-medium font-mono">
                 Select font family
               </p>
-              <span id="textarrow" class="text-xl font-bold">^</span>
+              <span id="familyarrow" class="text-xl font-bold rotate-[180deg]"
+                >^</span
+              >
             </div>
             <div
               id="familyoptions"
@@ -1056,6 +1062,9 @@
       var familybox = document.getElementById("familybox");
       var sizebox = document.getElementById("sizebox");
       var changestyle = document.getElementById("changestyle");
+      var colorarrow = document.getElementById("colorarrow");
+      var sizearrow = document.getElementById("sizearrow");
+      var familyarrow = document.getElementById("familyarrow");
       const stylecolors = ["green", "blue", "orange", "red"];
       const stylefamily = [
         "roboto",
@@ -1084,42 +1093,57 @@
       function selectcolor(val) {
         colorselected.innerHTML = val;
         changestyle.style.color = val;
+        colorarrow.classList.remove("rotate-[180deg]");
       }
       colorbox.addEventListener("click", function (event) {
         event.stopPropagation();
         coloroptions.classList.toggle("hidden");
+        fontsizeoptions.classList.add("hidden");
+        familyoptions.classList.add("hidden");
+        colorarrow.classList.toggle("rotate-[180deg]");
       });
       document.addEventListener("click", function () {
         if (!coloroptions.classList.contains("hidden")) {
           coloroptions.classList.add("hidden");
+          colorarrow.classList.toggle("rotate-[180deg]");
         }
       });
       // ====================== change font size ==============
       function selectsize(val) {
         fontsizeselected.innerHTML = val;
         changestyle.style.fontSize = val;
+        sizearrow.classList.remove("rotate-[180deg]");
       }
       sizebox.addEventListener("click", function (event) {
         event.stopPropagation();
         fontsizeoptions.classList.toggle("hidden");
+        coloroptions.classList.add("hidden");
+        familyoptions.classList.add("hidden");
+        sizearrow.classList.toggle("rotate-[180deg]");
       });
       document.addEventListener("click", function () {
         if (!fontsizeoptions.classList.contains("hidden")) {
           fontsizeoptions.classList.add("hidden");
+          sizearrow.classList.toggle("rotate-[180deg]");
         }
       });
       // ============= CHANGE FONT FAMILY =========
       function selectfamily(val) {
         familyselected.innerHTML = val;
         changestyle.classList.add(val);
+        familyarrow.classList.remove("rotate-[180deg]");
       }
       familybox.addEventListener("click", function (event) {
         event.stopPropagation();
         familyoptions.classList.toggle("hidden");
+        coloroptions.classList.add("hidden");
+        fontsizeoptions.classList.add("hidden");
+        familyarrow.classList.toggle("rotate-[180deg]");
       });
       document.addEventListener("click", function () {
         if (!familyoptions.classList.contains("hidden")) {
           familyoptions.classList.add("hidden");
+          familyarrow.classList.toggle("rotate-[180deg]");
         }
       });
     </script>
