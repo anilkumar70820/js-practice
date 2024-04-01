@@ -653,7 +653,51 @@
               class="absolute hidden z-10 !bg-white shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
             ></div>
           </div>
+          <div class="relative">
+            <div
+              id="weightbox"
+              class="flex items-center justify-between border-2 border-solid border-blue-700 rounded-md w-full py-1 px-2 cursor-pointer"
+            >
+              <p id="weightselected" class="text-lg font-medium font-mono">
+                Select font weight
+              </p>
+              <span id="weightarrow" class="text-xl font-bold rotate-[180deg]"
+                >^</span
+              >
+            </div>
+            <div
+              id="fontweightoptions"
+              class="absolute hidden z-10 !bg-white shadow-xl top-[102%] border-2 border-solid bg-white border-blue-700 overflow-hidden rounded-xl max-w-[150px] w-full"
+            ></div>
+          </div>
         </div>
+      </div>
+      <!-- =========== TO DO APP ========== -->
+      <div
+        class="bg-white shadow-xl rounded-xl flex justify-center items-center flex-col gap-5 p-10"
+      >
+        <h2
+          class="font-medium text-3xl font-mono text-center max-w-[300px] uppercase text-nowrap"
+        >
+          my task app
+        </h2>
+        <div
+          class="border-2 border-solid border-blue-700 rounded-xl px-2 py-1 w-full flex gap-2 items-center"
+        >
+          <input
+            id="inputtask"
+            class="outline-none bg-transparent h-full w-full px-2 rounded-xl font-medium text-lg font-mono"
+            type="text"
+            placeholder="Your Task"
+          />
+          <button
+            id="addtask"
+            class="font-medium text-xl bg-blue-700 px-3 py-1 rounded-xl text-white font-mono text-nowrap"
+          >
+            Add Task
+          </button>
+        </div>
+        <div id="showtask" class="w-full"></div>
       </div>
     </div>
 
@@ -1065,18 +1109,26 @@
       var colorarrow = document.getElementById("colorarrow");
       var sizearrow = document.getElementById("sizearrow");
       var familyarrow = document.getElementById("familyarrow");
-      const stylecolors = ["green", "blue", "orange", "red"];
-      const stylefamily = [
-        "roboto",
-        "poppins",
-        "inter",
-        "noto-sans",
-        "manrope",
+      var weightbox = document.getElementById("weightbox");
+      var weightoptions = document.getElementById("fontweightoptions");
+      var weightarrow = document.getElementById("weightarrow");
+      var weightselected = document.getElementById("weightselected");
+      const stylecolors = [
+        {
+          color: "black",
+          colorCode: "#000000",
+        },
+        {
+          color: "light-black",
+          colorCode: "#f0f4f9",
+        },
       ];
+      const stylefamily = ["roboto", "poppins", "inter"];
       const stylesize = ["18px", "24px", "30px", "32px"];
+      const styleweight = [400, 500, 600, 700, 800];
       coloroptions.innerHTML = stylecolors
         .map((obj) => {
-          return `<p onclick="selectcolor('${obj}')" class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300">${obj}</p>`;
+          return `<p onclick="selectcolor('${obj.colorCode}')" class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300 text-nowrap">${obj.color}</p>`;
         })
         .join("");
       familyoptions.innerHTML = stylefamily
@@ -1089,18 +1141,26 @@
           return `<p onclick="selectsize('${obj}')" class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300">${obj}</p>`;
         })
         .join("");
+      fontweightoptions.innerHTML = styleweight
+        .map((obj) => {
+          return `<p onclick="selectweight('${obj}')" class="text-lg font-medium font-mono py-1 ps-2 pe-10 hover:bg-blue-700 hover:text-white transistion-all duration-300">${obj}</p>`;
+        })
+        .join("");
       // ============= change color ==========
-      function selectcolor(val) {
-        colorselected.innerHTML = val;
-        changestyle.style.color = val;
+      function selectcolor(obj) {
+        colorselected.innerHTML = obj;
+        changestyle.style.color = obj;
         colorarrow.classList.remove("rotate-[180deg]");
       }
+
       colorbox.addEventListener("click", function (event) {
         event.stopPropagation();
         coloroptions.classList.toggle("hidden");
         fontsizeoptions.classList.add("hidden");
         familyoptions.classList.add("hidden");
         colorarrow.classList.toggle("rotate-[180deg]");
+        familyarrow.classList.add("rotate-[180deg]");
+        sizearrow.classList.add("rotate-[180deg]");
       });
       document.addEventListener("click", function () {
         if (!coloroptions.classList.contains("hidden")) {
@@ -1120,6 +1180,8 @@
         coloroptions.classList.add("hidden");
         familyoptions.classList.add("hidden");
         sizearrow.classList.toggle("rotate-[180deg]");
+        colorarrow.classList.add("rotate-[180deg]");
+        familyarrow.classList.add("rotate-[180deg]");
       });
       document.addEventListener("click", function () {
         if (!fontsizeoptions.classList.contains("hidden")) {
@@ -1130,7 +1192,7 @@
       // ============= CHANGE FONT FAMILY =========
       function selectfamily(val) {
         familyselected.innerHTML = val;
-        changestyle.classList.add(val);
+        changestyle.style.fontFamily = val;
         familyarrow.classList.remove("rotate-[180deg]");
       }
       familybox.addEventListener("click", function (event) {
@@ -1139,6 +1201,8 @@
         coloroptions.classList.add("hidden");
         fontsizeoptions.classList.add("hidden");
         familyarrow.classList.toggle("rotate-[180deg]");
+        colorarrow.classList.add("rotate-[180deg]");
+        sizearrow.classList.add("rotate-[180deg]");
       });
       document.addEventListener("click", function () {
         if (!familyoptions.classList.contains("hidden")) {
@@ -1146,6 +1210,65 @@
           familyarrow.classList.toggle("rotate-[180deg]");
         }
       });
+      // ============== CHANGE FONT WEIGHT ===========
+      function selectweight(val) {
+        weightselected.innerHTML = val;
+        changestyle.style.fontWeight = val;
+        weightarrow.classList.remove("rotate-[180deg]");
+      }
+      weightbox.addEventListener("click", function (event) {
+        event.stopPropagation();
+        weightoptions.classList.toggle("hidden");
+        coloroptions.classList.add("hidden");
+        fontsizeoptions.classList.add("hidden");
+        familyoptions.classList.add("hidden");
+        weightarrow.classList.toggle("rotate-[180deg]");
+        colorarrow.classList.add("rotate-[180deg]");
+        sizearrow.classList.add("rotate-[180deg]");
+        familyarrow.classList.add("rotate-[180deg]");
+      });
+      document.addEventListener("click", function () {
+        if (!weightoptions.classList.contains("hidden")) {
+          weightoptions.classList.add("hidden");
+          weightarrow.classList.toggle("rotate-[180deg]");
+        }
+      });
+    </script>
+    <!-- =============== MY TaSK ============ -->
+    <script>
+      var addtask = document.getElementById("addtask");
+      var inputtask = document.getElementById("inputtask");
+      var showtask = document.getElementById("showtask");
+      var taskarry = [];
+      addtask.addEventListener("click", function () {
+        taskarry.push(inputtask.value);
+        showtask.innerHTML = taskarry
+          .map((obj) => {
+            return `<div class="border border-solid border-blue-700 rounded-lg w-full p-2 flex items-center justify-between gap-2 mx-1 my-2 shadow-xl">
+            <p class="mb-0 font-mono font-medium text-lg max-w-[200px] text-ellipsis overflow-hidden">${obj}</p>
+<div class="flex items-center gap-3">
+  <span class="cursor-pointer task_check_mark transistion-all duration-300"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g>
+<path d="M12 2C6.486 2 2 6.486 2 12C2 17.514 6.486 22 12 22C17.514 22 22 17.514 22 12C22 6.486 17.514 2 12 2ZM12 20C7.589 20 4 16.411 4 12C4 7.589 7.589 4 12 4C16.411 4 20 7.589 20 12C20 16.411 16.411 20 12 20Z" fill="#808080"/>
+<path d="M9.99909 13.587L7.70009 11.292L6.28809 12.708L10.0011 16.413L16.7071 9.70697L15.2931 8.29297L9.99909 13.587Z" fill="#808080"/>
+</g>
+</svg>
+</span>
+  <span class="cursor-pointer task_check_mark transistion-all duration-300"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g>
+<path d="M5 20C5 20.5304 5.21071 21.0391 5.58579 21.4142C5.96086 21.7893 6.46957 22 7 22H17C17.5304 22 18.0391 21.7893 18.4142 21.4142C18.7893 21.0391 19 20.5304 19 20V8H21V6H17V4C17 3.46957 16.7893 2.96086 16.4142 2.58579C16.0391 2.21071 15.5304 2 15 2H9C8.46957 2 7.96086 2.21071 7.58579 2.58579C7.21071 2.96086 7 3.46957 7 4V6H3V8H5V20ZM9 4H15V6H9V4ZM8 8H17V20H7V8H8Z" fill="#808080"/>
+<path d="M9 10H11V18H9V10ZM13 10H15V18H13V10Z" fill="#808080"/>
+</g>
+</svg>
+</span>
+  </div>
+            </div>`;
+          })
+          .join("");
+        inputtask.value = " ";
+      });
+
+      
     </script>
   </body>
 </html>

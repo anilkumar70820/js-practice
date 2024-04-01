@@ -14,6 +14,6 @@
 .poppins{
     font-family: "Poppins", sans-serif;
 }
-.noto-sans{
-    font-family: "Noto Sans TC", sans-serif;
+.task_check_mark:hover svg path{
+fill: black;
 }
